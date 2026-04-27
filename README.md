@@ -1,3 +1,7 @@
+> This is a luxfi-maintained fork of [ethereum/go-verkle](https://github.com/ethereum/go-verkle); see [LUXFI-FORK.md](./LUXFI-FORK.md) for sync policy.
+
+---
+
 [![Go Version](https://img.shields.io/badge/go-v1.19-green.svg)](https://golang.org/dl/)
 [![Lint and Test](https://github.com/ethereum/go-verkle/actions/workflows/go.yml/badge.svg)](https://github.com/ethereum/go-verkle/actions/workflows/go.yml)
 [![goreports](https://goreportcard.com/badge/github.com/ethereum/go-verkle)](https://goreportcard.com/report/github.com/ethereum/go-verkle)
