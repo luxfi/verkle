@@ -2,6 +2,18 @@
 
 # go-verkle
 
+## Lux Fork
+
+This is a Lux Industries fork of the canonical upstream:
+- **Upstream**: https://github.com/ethereum/go-verkle
+- **Pinned commit**: `d0fe987`
+- **Pinned tag**: `v0.3.0` (post-#233)
+- **License**: Unlicense / public domain (preserved from upstream — see `LICENSE`)
+- **Lux extensions**: NONE (verbatim parity with upstream).
+- **Tag policy**: track upstream semver verbatim. Divergence (if ever required) signaled by next-minor bump, NOT prerelease suffixes.
+
+---
+
 A **very experimental** implementation of [Verkle trees](https://notes.ethereum.org/nrQqhVpQRi6acQckwm1Ryg). When production-ready, the code is to be split between go-kzg and go-ethereum.
 
 Supported node widths are 8 and 10 bits.
