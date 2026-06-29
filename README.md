@@ -1,3 +1,5 @@
+<p align="center"><img src=".github/hero.svg" alt="go-verkle" width="880"></p>
+
 [![CircleCI](https://circleci.com/gh/gballet/go-verkle.svg?style=shield)](https://circleci.com/gh/gballet/go-verkle)
 
 # go-verkle
