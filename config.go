@@ -64,7 +64,7 @@ func GetTreeConfig(width int) *TreeConfig {
 	nChildren := 1 << width
 	s1Out := make([]bls.G1Point, nChildren, nChildren)
 	s2Out := make([]bls.G2Point, nChildren, nChildren)
-	for i := 0; i < nChildren; i++ {
+	for i := range nChildren {
 		bls.MulG1(&s1Out[i], &bls.GenG1, &sPow)
 		bls.MulG2(&s2Out[i], &bls.GenG2, &sPow)
 		var tmp bls.Fr

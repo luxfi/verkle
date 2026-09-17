@@ -23,7 +23,7 @@ func GenerateTestingSetupWithLagrange(secret string, n uint64, fftCfg *kzg.FFTSe
 
 	s1Out := make([]bls.G1Point, n, n)
 	s2Out := make([]bls.G2Point, n, n)
-	for i := uint64(0); i < n; i++ {
+	for i := range n {
 		bls.MulG1(&s1Out[i], &bls.GenG1, &sPow)
 		bls.MulG2(&s2Out[i], &bls.GenG2, &sPow)
 		var tmp bls.Fr
@@ -60,9 +60,9 @@ func benchmarkInsertInExisting() {
 	toInsertKeys := make([][]byte, toInsert)
 	value := []byte("value")
 
-	for i := 0; i < 4; i++ {
+	for i := range 4 {
 		// Generate set of keys once
-		for i := 0; i < total; i++ {
+		for i := range total {
 			key := make([]byte, 32)
 			rand.Read(key)
 			if i < n {
@@ -74,7 +74,7 @@ func benchmarkInsertInExisting() {
 		fmt.Printf("Generated key set %d\n", i)
 
 		// Create tree from same keys multiple times
-		for i := 0; i < 5; i++ {
+		for range 5 {
 			root := verkle.New(10)
 			for _, k := range keys {
 				if err := root.Insert(k, value); err != nil {

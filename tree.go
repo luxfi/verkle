@@ -330,7 +330,7 @@ func (n *InternalNode) CreateAccount(key []byte, version, nonce, codeSize uint64
 		return errors.New("trying to create an account in an invalid subtree")
 	case empty:
 		n.children[nChild] = &accountLeaf{
-			leafNode: leafNode{key: key},
+			key:      key,
 			Version:  version,
 			Balance:  balance,
 			Nonce:    nonce,
@@ -413,7 +413,7 @@ func hashToFr(out *bls.Fr, h [32]byte, modulus *big.Int) {
 	x.Mod(x, modulus)
 
 	// clear the buffer in case the trailing bytes were 0
-	for i := 0; i < 32; i++ {
+	for i := range 32 {
 		h2[i] = 0
 	}
 	copy(h2[32-len(x.Bytes()):], x.Bytes())
@@ -495,7 +495,7 @@ func (n *InternalNode) Serialize() ([]byte, error) {
 			children = append(children, c.Hash().Bytes()...)
 		}
 	}
-	return rlp.EncodeToBytes([]interface{}{bitlist, children})
+	return rlp.EncodeToBytes([]any{bitlist, children})
 }
 
 const (

@@ -111,7 +111,7 @@ func BenchmarkProofCalculation(b *testing.B) {
 	value := []byte("value")
 	keys := make([][]byte, 100000)
 	root := New(10)
-	for i := 0; i < 100000; i++ {
+	for i := range 100000 {
 		key := make([]byte, 32)
 		rand.Read(key)
 		keys[i] = key
@@ -150,7 +150,7 @@ func BenchmarkProofVerification(b *testing.B) {
 	} else {
 		tc = root.treeConfig
 	}
-	for i := 0; i < 100000; i++ {
+	for i := range 100000 {
 		key := make([]byte, 32)
 		rand.Read(key)
 		keys[i] = key

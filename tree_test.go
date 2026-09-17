@@ -251,7 +251,7 @@ func TestHashToFrTrailingZeroBytes(t *testing.T) {
 
 func TestOffset2Key8BitsWide(t *testing.T) {
 	key := common.Hex2Bytes("000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f")
-	for i := 0; i < 32; i++ {
+	for i := range 32 {
 		childId := offset2Key(key, i*8, 8)
 		if childId != uint(i) {
 			t.Fatalf("error getting child number in key %d != %d", childId, i)
@@ -261,7 +261,7 @@ func TestOffset2Key8BitsWide(t *testing.T) {
 
 func TestOffset2Key10BitsWide(t *testing.T) {
 	key := common.Hex2Bytes("00001008030100501807020090280b0300d0380f040110481305015058170601")
-	for i := 0; i < 25; i++ {
+	for i := range 25 {
 		childId := offset2Key(key, i*10, 10)
 		if childId != uint(i) {
 			t.Fatalf("error getting child number in key %d != %d", childId, i)
@@ -391,7 +391,7 @@ func BenchmarkCommit10kLeaves(b *testing.B) {
 func BenchmarkCommitFullNode(b *testing.B) {
 	value := []byte("value")
 	keys := make([][]byte, 1024)
-	for i := 0; i < 1024; i++ {
+	for i := range 1024 {
 		key := make([]byte, 32)
 		binary.BigEndian.PutUint16(key[:2], uint16(i)<<6)
 		keys[i] = key
@@ -420,7 +420,7 @@ func benchmarkCommitNLeaves(b *testing.B, n int) {
 	sortedKVs := make([]kv, n)
 
 	rand.Seed(time.Now().UnixNano())
-	for i := 0; i < n; i++ {
+	for i := range n {
 		key := make([]byte, 32)
 		val := make([]byte, 32)
 		rand.Read(key)
@@ -474,7 +474,7 @@ func BenchmarkModifyLeaves(b *testing.B) {
 	val := []byte{0}
 	keys := make([][]byte, n)
 	root := New(10)
-	for i := 0; i < n; i++ {
+	for i := range n {
 		key := make([]byte, 32)
 		rand.Read(key)
 		keys[i] = key
@@ -488,7 +488,7 @@ func BenchmarkModifyLeaves(b *testing.B) {
 	val = make([]byte, 4)
 	for i := 0; i < b.N; i++ {
 		binary.BigEndian.PutUint32(val, uint32(i))
-		for j := 0; j < toEdit; j++ {
+		for range toEdit {
 			k := keys[rand.Intn(n)]
 			if err := root.Insert(k, val); err != nil {
 				b.Error(err)
@@ -500,7 +500,7 @@ func BenchmarkModifyLeaves(b *testing.B) {
 
 func randomKeys(n int) [][]byte {
 	keys := make([][]byte, n)
-	for i := 0; i < n; i++ {
+	for i := range n {
 		key := make([]byte, 32)
 		rand.Read(key)
 		keys[i] = key

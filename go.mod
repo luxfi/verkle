@@ -1,6 +1,6 @@
 module github.com/luxfi/verkle
 
-go 1.26.4
+go 1.27.1
 
 require (
 	github.com/luxfi/geth v1.19.0
